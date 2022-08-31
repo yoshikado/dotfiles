@@ -71,6 +71,8 @@ brew install xz
 
 # Cask
 brew install alfred
+brew install cmd-eikana
+brew install dropbox
 brew install google-chrome
 brew install iterm2
 brew install karabiner-elements
@@ -80,6 +82,8 @@ brew install multipass
 brew install mattermost
 brew install mos
 brew install numi
+brew install obs
+brew install obsidian
 brew install rectangle
 brew install slack
 brew install spotify
@@ -87,6 +91,7 @@ brew install syncthing --cask
 brew install tailscale --cask
 brew install telegram
 brew install visual-studio-code
+brew install vb-cable
 brew install vlc
 brew install zenmap
 brew install zoom
