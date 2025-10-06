@@ -1,0 +1,29 @@
+# ~/.gitconfig
+
+[user]
+  name = yoshikado
+  email = yoshi.yoon@gmail.com
+
+[core]
+  editor = vim
+  autocrlf = input
+
+[init]
+  # Set the default branch name to "main" for new repositories
+  defaultBranch = main
+
+[alias]
+  # Very useful shortcuts
+  st = status
+  co = checkout
+  br = branch
+  unstage = reset HEAD --
+  # A prettier, more informative log
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[pull]
+  # Avoid creating merge commits for simple fast-forwards
+  ff = only
+
+[gitreview]
+  username = yoshikado
