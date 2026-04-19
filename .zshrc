@@ -42,8 +42,8 @@ alias update='sudo apt update && sudo apt upgrade -y'
 alias ls='ls --color=auto' # Enable color
 alias ll='ls -alF'         # List all files in detail
 alias la='ls -A'           # List all files including hidden
-alias canonicalvpn="sudo openvpn /home/yoshi/config/keys/vpn/canonical/us-yoshikadokawa.conf"
-alias canonicalukvpn="sudo openvpn /home/yoshi/config/keys/vpn/canonical/uk-yoshikadokawa@2.conf"
+alias canonicalvpn="sudo openvpn $HOME/config/keys/vpn/canonical/us-yoshikadokawa.conf"
+alias canonicalukvpn="sudo openvpn $HOME/config/keys/vpn/canonical/uk-yoshikadokawa@2.conf"
 
 # --- Functions ---
 # Create a directory and cd into it immediately
@@ -75,10 +75,20 @@ function _fzf_cd_ghq() {
   zle reset-prompt
 }
 zle -N _fzf_cd_ghq
-bindkey "^g" _fzf_cd_ghq
+
+prj_clone() {
+  # Clones a single branch from the cpe-deploymentes repository.
+  # Usage: prj_clone <BRANCH_NAME>
+  git clone --single-branch -b "$1" git+ssh://git.launchpad.net/cpe-deployments $HOME/ghq/deployments/"$1"
+}
 
 # --- Enable plugins ---
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+# --- Key bindings ---
+# explicitly set emacs keybindings (as EDITOR=vim sets back to vim mode)
+bindkey -e
+bindkey "^g" _fzf_cd_ghq
 
 # --- Prompt Customization ---
 # For a modern, powerful prompt, many people use tools like Starship or Powerlevel10k.

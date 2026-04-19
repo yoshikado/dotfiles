@@ -25,6 +25,7 @@ APT_PACKAGES="
   tmux
   virtualenv
   lm-sensors
+  bat
 "
 PPA_APT_PACKAGES="
   syncthing
@@ -55,6 +56,7 @@ echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/${UBUNTU_RELEASE}.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/${UBUNTU_RELEASE}.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 curl -fsS -o- https://deb.packages.mattermost.com/setup-repo.sh | sudo UPDATE_GPG_KEY=yes bash
+curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_25.04/Release.key | sudo tee /usr/share/keyrings/home_manuelschneid3r.gpg > /dev/null
 
 # --- Install PPA APT packages ---
 echo "Installing PPA APT packages..."
@@ -62,7 +64,7 @@ sudo apt update && sudo apt install -y $PPA_APT_PACKAGES
 
 # --- Install Apps with Snap ---
 echo "Installing Snap packages..."
-sudo snap install juju
+sudo snap install juju glow
 sudo snap install terraform --classic
 sudo snap install google-cloud-cli --classic
 sudo snap install go --classic
