@@ -42,8 +42,8 @@ alias update='sudo apt update && sudo apt upgrade -y'
 alias ls='ls --color=auto' # Enable color
 alias ll='ls -alF'         # List all files in detail
 alias la='ls -A'           # List all files including hidden
-alias canonicalvpn="sudo openvpn $HOME/config/keys/vpn/canonical/us-yoshikadokawa.conf"
-alias canonicalukvpn="sudo openvpn $HOME/config/keys/vpn/canonical/uk-yoshikadokawa@2.conf"
+alias canonicalvpn="cd $HOME/config/keys/vpn/canonical;sudo openvpn us-yoshikadokawa.conf"
+alias canonicalukvpn="cd $HOME/config/keys/vpn/canonical;sudo openvpn uk-yoshikadokawa@2.conf"
 
 # --- Functions ---
 # Create a directory and cd into it immediately
@@ -89,6 +89,8 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # explicitly set emacs keybindings (as EDITOR=vim sets back to vim mode)
 bindkey -e
 bindkey "^g" _fzf_cd_ghq
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # --- Prompt Customization ---
 # For a modern, powerful prompt, many people use tools like Starship or Powerlevel10k.

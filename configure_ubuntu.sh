@@ -60,6 +60,10 @@ fi
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# --- Install Vim plugins ---
+echo "Installing Vim plugins..."
+vim -c 'PlugInstall --sync' -c 'qa'
+
 # --- Clone zsh plugin ---
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
@@ -88,6 +92,17 @@ else
   # This message is shown if fonts are skipped
   echo "Skipping Nerd Font installation as requested."
 fi
+
+# --- Only for desktop ---
+if [ -n "$DISPLAY" ]; then
+  im-config -n fcitx5
+  gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/IMModule':<'fcitx'>}"
+  mkdir -p ~/.config/autostart
+  cp /usr/share/applications/org.fcitx.Fcitx5.desktop ~/.config/autostart/
+  gsettings set org.gnome.desktop.background picture-options 'none'
+  gsettings set org.gnome.desktop.background primary-color '#000000'
+fi
+
 
 # --- Change default shell to zsh ---
 echo "Update default shell to zsh."

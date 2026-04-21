@@ -36,8 +36,9 @@ DESKTOP_APT_PACKAGES="
   gnome-shell-extensions
   gnome-shell-extension-manager
   mattermost-desktop
-  ibus-mozc
-  mozc-utils-gui
+  fcitx5
+  fcitx5-mozc
+  fcitx5-config-qt
 "
 
 UBUNTU_RELEASE=$(lsb_release -sc)
@@ -56,7 +57,6 @@ echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/${UBUNTU_RELEASE}.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/${UBUNTU_RELEASE}.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 curl -fsS -o- https://deb.packages.mattermost.com/setup-repo.sh | sudo UPDATE_GPG_KEY=yes bash
-curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_25.04/Release.key | sudo tee /usr/share/keyrings/home_manuelschneid3r.gpg > /dev/null
 
 # --- Install PPA APT packages ---
 echo "Installing PPA APT packages..."
@@ -98,6 +98,12 @@ if [ -n "$DISPLAY" ]; then
   sudo snap install code --classic
   sudo snap install obsidian --classic
   sudo snap install slack
+  sudo snap install ghostty --classic
+
+  echo "Installing Google Chrome..."
+  wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
+  rm /tmp/google-chrome-stable_current_amd64.deb
 fi
 
 # --- Final Clean-up ---
