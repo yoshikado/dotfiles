@@ -1,0 +1,12 @@
+font-family = "JetBrains Mono"
+font-size = 11
+
+background-image-opacity = 0.9
+
+# You can check other themes by `ghostty +list-themes`
+theme = "Catppuccin Mocha"
+
+cursor-style = block
+cursor-style-blink = true
+
+# window-decoration = false

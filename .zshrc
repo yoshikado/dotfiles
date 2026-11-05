@@ -7,6 +7,8 @@ export VISUAL='vim'
 export PATH=$PATH:/$HOME/go/bin
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
+# Use bitwarden ssh agent
+export SSH_AUTH_SOCK=$HOME/snap/bitwarden/current/.bitwarden-ssh-agent.sock
 
 # --- History ---
 # Set the history file
@@ -103,3 +105,8 @@ eval "$(starship init zsh)"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/yoshi.kadokawa@canonical.com/.local/bin:$PATH"
+export PATH="/home/yoshi.kadokawa@canonical.com/.terragrunt/bin:$PATH"

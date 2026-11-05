@@ -27,3 +27,5 @@
 
 [gitreview]
   username = yoshikado
+[credential]
+	helper = cache --timeout=28800

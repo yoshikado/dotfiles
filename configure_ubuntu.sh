@@ -94,7 +94,7 @@ else
 fi
 
 # --- Only for desktop ---
-if [ -n "$DISPLAY" ]; then
+if [ -n "${DISPLAY-}" ]; then
   im-config -n fcitx5
   gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "{'Gtk/IMModule':<'fcitx'>}"
   mkdir -p ~/.config/autostart
@@ -106,6 +106,6 @@ fi
 
 # --- Change default shell to zsh ---
 echo "Update default shell to zsh."
-chsh -s $(which zsh)
+sudo usermod --shell "$(which zsh)" "$USER"
 
 echo "✅ Installation complete!"

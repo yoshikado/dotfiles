@@ -26,6 +26,7 @@ APT_PACKAGES="
   virtualenv
   lm-sensors
   bat
+  blueman
 "
 PPA_APT_PACKAGES="
   syncthing
@@ -93,7 +94,7 @@ else
 fi
 
 # --- Desktop specific ---
-if [ -n "$DISPLAY" ]; then
+if [ -n "${DISPLAY-}" ]; then
   sudo apt update && sudo apt install -y $DESKTOP_APT_PACKAGES
   sudo snap install code --classic
   sudo snap install obsidian --classic
